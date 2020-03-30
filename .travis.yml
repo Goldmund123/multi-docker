@@ -1,0 +1,22 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t jaykim/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run -e CI=true jaykim/react-test npm test
+
+after_success:
+    - docker build -t jaykim/multi-client ./client
+    - docker build -t jaykim/multi-nginx ./nginx
+    - docker build -t jaykim/multi-server ./server
+    - docker build -t jaykim/multi-worker ./worker
+    # Log in to the docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    # Take those images and push them to docker hub
+    - docker push jaykim/multi-client
+    - docker push jaykim/multi-nginx
+    - docker push jaykim/multi-server
+    - docker push jaykim/multi-worker
