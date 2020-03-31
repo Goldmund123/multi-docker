@@ -5,17 +5,20 @@
             "name": "client",
             "image": "new4303/multi-client",
             "hostname": "client",
-            "essential": false        },
+            "essential": false        
+        },
         {
             "name": "server",
             "image": "new4303/multi-server",
             "hostname": "api",
-            "essential": false        },
+            "essential": false        
+        },
         {
             "name": "worker",
             "image": "new4303/multi-worker",
             "hostname": "worker",
-            "essential": false        },
+            "essential": false        
+        },
         {
             "name": "nginx",
             "image": "new4303/multi-nginx",
@@ -27,6 +30,7 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["client", "server"]        }
+            "links": ["client", "server"]  
+        }
     ]
 }
