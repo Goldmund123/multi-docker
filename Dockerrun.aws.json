@@ -5,23 +5,17 @@
             "name": "client",
             "image": "new4303/multi-client",
             "hostname": "client",
-            "essential": false,
-            "memory": 128
-        },
+            "essential": false        },
         {
             "name": "server",
             "image": "new4303/multi-server",
             "hostname": "api",
-            "essential": false,
-            "memory": 128
-        },
+            "essential": false        },
         {
             "name": "worker",
             "image": "new4303/multi-worker",
             "hostname": "worker",
-            "essential": false,
-            "memory": 128
-        },
+            "essential": false        },
         {
             "name": "nginx",
             "image": "new4303/multi-nginx",
@@ -33,8 +27,6 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["client", "server"],
-            "memory": 128
-        }
+            "links": ["client", "server"]        }
     ]
 }
